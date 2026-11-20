@@ -1,0 +1,987 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f0ede5" />
+  <meta name="description" content="Profil personal MPW: mahasiswa Psikologi dengan latar Teknik Elektronika Industri, pemikiran analitis, dan minat lintas bidang." />
+  <meta property="og:title" content="MPW — Memahami, Menganalisis, Terus Belajar" />
+  <meta property="og:description" content="Perjalanan dari teknik elektronika ke psikologi, dengan rasa ingin tahu yang melintasi banyak bidang." />
+  <meta property="og:type" content="website" />
+  <title>MPW — Memahami, Menganalisis, Terus Belajar</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #f0ede5;
+      --paper-deep: #e6e2d6;
+      --ink: #1a2620;
+      --ink-soft: #2c3a32;
+      --muted: #6b746d;
+      
+      /* PALET WARNA BARU: SOFT BLUE */
+      --blue: #4B6A8C; 
+      --blue-deep: #2F4560;
+      --blue-soft: #6A87A6;
+      
+      --line: rgba(26, 38, 32, .12);
+      --line-strong: rgba(26, 38, 32, .22);
+      --clay: #b87a5c;
+      --clay-soft: #d1a890;
+      --white: #fbfaf6;
+      --serif: "Fraunces", Georgia, "Times New Roman", serif;
+      --sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --content: 1180px;
+      --ease: cubic-bezier(.22, 1, .36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-feature-settings: "kern", "liga", "ss01";
+    }
+
+    /* Subtle film grain overlay */
+    body::before {
+      content: "";
+      position: fixed; inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: .035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    a { color: inherit; }
+    ::selection { background: var(--clay); color: var(--white); }
+
+    .skip-link {
+      position: absolute; left: 16px; top: -60px; z-index: 20;
+      padding: 10px 14px; background: var(--ink); color: var(--white);
+      border-radius: 4px; text-decoration: none;
+    }
+    .skip-link:focus { top: 12px; }
+
+    .shell { width: min(var(--content), calc(100% - 56px)); margin: 0 auto; }
+
+    /* ============ HEADER ============ */
+    .site-header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(240, 237, 229, .82);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+    }
+    .nav-wrap {
+      min-height: 82px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 13px;
+      text-decoration: none;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 17px;
+      letter-spacing: -.02em;
+    }
+    .brand-mark {
+      width: 40px; height: 40px;
+      display: grid; place-items: center;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 50%;
+      font-family: var(--sans); /* Ubah ke sans biar MPW rapi */
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      transition: transform .5s var(--ease), background .3s ease;
+    }
+    .brand:hover .brand-mark { transform: rotate(-8deg); background: var(--blue-deep); }
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-top: -1px;
+    }
+
+    .nav-links { display: flex; align-items: center; gap: clamp(20px, 3vw, 40px); }
+    .nav-links a {
+      position: relative;
+      text-decoration: none;
+      color: var(--ink-soft);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: -.005em;
+      transition: color .2s ease;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute; left: 0; bottom: -5px;
+      width: 100%; height: 1px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform .5s var(--ease);
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+    .nav-contact {
+      padding: 9px 16px;
+      border: 1px solid var(--line-strong);
+      border-radius: 99px;
+      font-size: 12.5px;
+      transition: all .3s var(--ease);
+    }
+    .nav-contact::after { display: none; }
+    .nav-contact:hover {
+      background: var(--blue);
+      color: var(--white) !important;
+      border-color: var(--blue);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      border-radius: 8px;
+      padding: 9px 12px;
+      color: var(--ink);
+      font: inherit; font-size: 12px;
+      cursor: pointer;
+      align-items: center; gap: 8px;
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      min-height: calc(100vh - 82px);
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 6%;
+      padding-top: 60px;
+      padding-bottom: 60px;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: ""; width: 32px; height: 1px;
+      background: var(--clay);
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 720px;
+      margin: 28px 0 30px;
+      font-family: var(--serif);
+      font-size: clamp(52px, 6.8vw, 88px);
+      font-weight: 300;
+      letter-spacing: -.045em;
+      line-height: .98;
+      font-variation-settings: "opsz" 144;
+    }
+    h1 em {
+      color: var(--blue);
+      font-weight: 300;
+      font-style: italic;
+      font-variation-settings: "opsz" 144;
+    }
+
+    .hero-copy {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.85;
+      letter-spacing: -.005em;
+    }
+
+    .hero-actions {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+      margin-top: 40px;
+    }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+      min-height: 50px; padding: 0 22px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: -.005em;
+      transition: transform .4s var(--ease), background .3s ease, border-color .3s ease, color .3s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--blue); color: var(--white); }
+    .button-primary:hover { background: var(--blue-deep); }
+    .button-secondary { border: 1px solid var(--line-strong); color: var(--ink); }
+    .button-secondary:hover { border-color: var(--blue); color: var(--blue); }
+    .button .arrow {
+      font-size: 16px; line-height: 1;
+      transition: transform .4s var(--ease);
+    }
+    .button:hover .arrow { transform: translate(3px, 3px); }
+
+    /* HERO ART */
+    .hero-art {
+      position: relative;
+      min-height: 500px;
+      display: grid; place-items: center;
+    }
+    .art-frame {
+      position: relative;
+      width: min(100%, 440px);
+      aspect-ratio: 1 / 1.08;
+      overflow: hidden;
+      background: var(--blue);
+      border-radius: 50% 50% 6px 6px;
+      box-shadow: 0 40px 80px -30px rgba(47, 69, 96, .35);
+    }
+    .art-frame::before, .art-frame::after {
+      content: ""; position: absolute;
+      border: 1px solid rgba(248, 247, 239, .18);
+      border-radius: 50%;
+    }
+    .art-frame::before { width: 78%; aspect-ratio: 1; top: 10%; left: 11%; }
+    .art-frame::after { width: 56%; aspect-ratio: 1; top: 21%; left: 22%; }
+
+    .art-grid {
+      position: absolute; inset: 0; opacity: .2;
+      background-image:
+        linear-gradient(rgba(255,255,255,.14) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.14) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(to bottom, black, transparent 88%);
+      -webkit-mask-image: linear-gradient(to bottom, black, transparent 88%);
+    }
+
+    .orbit {
+      position: absolute; border-radius: 50%;
+      background: var(--clay-soft);
+      box-shadow: 0 0 0 8px rgba(209, 168, 144, .14);
+      animation: orbitFloat 6s ease-in-out infinite;
+    }
+    .orbit.one { top: 23%; left: 24%; width: 14px; height: 14px; }
+    .orbit.two { top: 56%; right: 17%; width: 9px; height: 9px; background: #e7dfc9; box-shadow: 0 0 0 7px rgba(231,223,201,.14); animation-delay: -2s; }
+    .orbit.three { bottom: 19%; left: 35%; width: 7px; height: 7px; animation-delay: -4s; }
+    @keyframes orbitFloat {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-6px, -8px); }
+    }
+
+    .art-core {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: var(--white);
+      text-align: center;
+      padding: 45px;
+    }
+    
+    /* MONOGRAM MPW */
+    .art-monogram {
+      font-family: var(--serif);
+      font-size: clamp(65px, 9vw, 110px); /* Ukuran disesuaikan agar MPW muat */
+      line-height: .9;
+      letter-spacing: .02em;
+      margin-left: .02em;
+      color: #f1eee4;
+      font-weight: 300;
+      font-variation-settings: "opsz" 144;
+    }
+    
+    .art-caption {
+      margin-top: 26px;
+      font-size: 10px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.68);
+      font-weight: 500;
+    }
+
+    .art-note {
+      position: absolute;
+      right: -16px; bottom: 32px;
+      max-width: 228px;
+      padding: 22px 22px;
+      background: var(--white);
+      box-shadow: 0 24px 60px -20px rgba(47, 69, 96, .22);
+      border: 1px solid rgba(26, 38, 32, .05);
+      border-radius: 2px;
+    }
+    .art-note span {
+      display: block;
+      color: var(--clay);
+      font-size: 10px;
+      letter-spacing: .18em;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .art-note strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.35;
+      letter-spacing: -.02em;
+    }
+
+    /* ============ SECTIONS ============ */
+    .section {
+      padding: 130px 0;
+      border-top: 1px solid var(--line);
+      position: relative;
+    }
+    .section-head {
+      display: grid;
+      grid-template-columns: .58fr 1.42fr;
+      gap: 8%;
+      margin-bottom: 70px;
+    }
+    .section-index {
+      color: var(--clay);
+      font-size: 11px;
+      letter-spacing: .2em;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding-top: 14px;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(38px, 4.6vw, 62px);
+      line-height: 1.05;
+      letter-spacing: -.04em;
+      font-weight: 300;
+      margin-bottom: 22px;
+      font-variation-settings: "opsz" 144;
+    }
+    .section-intro {
+      max-width: 660px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 15px;
+      margin-bottom: 0;
+      letter-spacing: -.005em;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 9%;
+      align-items: start;
+    }
+    .about-text p {
+      color: var(--ink-soft);
+      font-size: 15px;
+      line-height: 1.95;
+      margin-bottom: 20px;
+      letter-spacing: -.003em;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .pull-quote {
+      margin: 0;
+      padding: 8px 0 8px 30px;
+      border-left: 2px solid var(--clay);
+      font-family: var(--serif);
+      font-size: clamp(24px, 2.5vw, 32px);
+      line-height: 1.35;
+      letter-spacing: -.025em;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink);
+      font-variation-settings: "opsz" 144;
+    }
+    .pull-quote small {
+      display: block;
+      margin-top: 20px;
+      font-family: var(--sans);
+      font-style: normal;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ============ TIMELINE ============ */
+    .timeline {
+      position: relative;
+      max-width: 760px;
+      margin: 0;
+      padding-left: 24px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 8px; bottom: 0; left: 0;
+      width: 1px;
+      background: var(--line-strong);
+    }
+    .timeline-item {
+      position: relative;
+      padding-bottom: 48px;
+      padding-left: 32px;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    
+    /* The dot */
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -4.5px; top: 6px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--paper);
+      border: 1.5px solid var(--clay);
+      z-index: 1;
+      transition: background .3s ease, border-color .3s ease, transform .4s var(--ease);
+    }
+    /* Active/Current state */
+    .timeline-item.current::before {
+      background: var(--blue);
+      border-color: var(--blue);
+      box-shadow: 0 0 0 5px rgba(75, 106, 140, .12);
+      transform: scale(1.1);
+    }
+    /* Hover effect on item */
+    .timeline-item:hover::before {
+      background: var(--clay);
+      border-color: var(--clay);
+    }
+    .timeline-item.current:hover::before {
+      background: var(--blue-deep);
+      border-color: var(--blue-deep);
+    }
+
+    .timeline-date {
+      font-family: var(--sans);
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: .15em;
+      color: var(--clay);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: inline-block;
+      transition: color .3s ease;
+    }
+    .timeline-item.current .timeline-date { color: var(--blue); }
+
+    .timeline-title {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 6px;
+      line-height: 1.25;
+      letter-spacing: -.02em;
+      font-variation-settings: "opsz" 144;
+    }
+    .timeline-desc {
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0;
+      letter-spacing: -.003em;
+    }
+
+    /* EXPLORE */
+    .explore-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .explore-card {
+      min-height: 250px;
+      padding: 30px 26px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      transition: background .35s ease, transform .5s var(--ease);
+      position: relative;
+    }
+    .explore-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--clay);
+      transition: width .5s var(--ease);
+    }
+    .explore-card:hover { background: rgba(251, 250, 246, .6); }
+    .explore-card:hover::before { width: 100%; }
+    .explore-num {
+      color: var(--clay);
+      font-size: 10.5px;
+      letter-spacing: .14em;
+      font-weight: 500;
+      font-family: var(--sans);
+    }
+    .explore-card h3 {
+      margin: 40px 0 12px;
+      font-family: var(--serif);
+      font-size: 24px;
+      line-height: 1.2;
+      font-weight: 400;
+      letter-spacing: -.02em;
+      font-variation-settings: "opsz" 144;
+    }
+    .explore-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.75;
+      letter-spacing: -.002em;
+    }
+
+    /* APPROACH */
+    .approach-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 10%;
+      align-items: start;
+    }
+    .approach-copy {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+      letter-spacing: -.003em;
+    }
+    .principles { border-top: 1px solid var(--line); }
+    .principle {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 18px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+      transition: padding-left .4s var(--ease);
+    }
+    .principle:hover { padding-left: 8px; }
+    .principle-num {
+      color: var(--clay);
+      font-size: 11px;
+      font-weight: 600;
+      padding-top: 5px;
+      font-family: var(--sans);
+      letter-spacing: .05em;
+    }
+    .principle h3 {
+      font-size: 15px;
+      margin: 0 0 4px;
+      font-weight: 600;
+      letter-spacing: -.005em;
+    }
+    .principle p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: -.002em;
+    }
+
+    .skills-band {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 38px;
+    }
+    .skill {
+      padding: 9px 14px;
+      border: 1px solid var(--line-strong);
+      border-radius: 99px;
+      color: var(--ink-soft);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: -.002em;
+      transition: all .3s ease;
+      background: transparent;
+    }
+    .skill:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+    .note {
+      color: var(--muted);
+      font-size: 11.5px;
+      line-height: 1.7;
+      margin-top: 18px;
+      font-style: italic;
+    }
+
+    /* CLOSING */
+    .closing {
+      background: var(--blue-deep);
+      color: var(--white);
+      padding: 110px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .closing::before {
+      content: "";
+      position: absolute;
+      top: -40%; right: -10%;
+      width: 60%; aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184, 122, 92, .12), transparent 70%);
+      pointer-events: none;
+    }
+    .closing-inner {
+      display: flex; align-items: end; justify-content: space-between;
+      gap: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .closing .eyebrow { color: var(--clay-soft); }
+    .closing .eyebrow::before { background: var(--clay-soft); }
+    .closing h2 {
+      max-width: 720px;
+      margin: 22px 0 16px;
+      font-weight: 300;
+      letter-spacing: -.04em;
+      color: var(--white);
+    }
+    .closing p {
+      color: rgba(255,255,255,.68);
+      max-width: 560px;
+      font-size: 14.5px;
+      margin: 0;
+      line-height: 1.85;
+      letter-spacing: -.003em;
+    }
+    .closing-mark {
+      font-family: var(--serif);
+      font-size: clamp(60px, 8vw, 100px); /* Menyesuaikan ukuran MPW */
+      color: rgba(255,255,255,.1);
+      line-height: .8;
+      white-space: nowrap;
+      font-weight: 300;
+      letter-spacing: .02em;
+      font-variation-settings: "opsz" 144;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 26px 0;
+      background: #1c2d42; /* Deep blue footer */
+      color: rgba(255,255,255,.55);
+      font-size: 11.5px;
+      letter-spacing: .01em;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px;
+    }
+    footer a {
+      text-decoration: none;
+      color: rgba(255,255,255,.75);
+      transition: color .2s ease;
+    }
+    footer a:hover { color: var(--clay-soft); }
+
+    /* ============ SCROLL REVEAL ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 1s var(--ease), transform 1s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 920px) {
+      .hero { min-height: auto; grid-template-columns: 1fr .8fr; gap: 4%; padding: 80px 0; }
+      .hero-art { min-height: 400px; }
+      .art-note { right: -8px; bottom: 14px; max-width: 200px; padding: 17px; }
+      .art-note strong { font-size: 16px; }
+      .section { padding: 96px 0; }
+      .section-head { margin-bottom: 52px; }
+      .explore-grid { grid-template-columns: repeat(2, 1fr); }
+      .explore-card { min-height: 220px; }
+    }
+
+    @media (max-width: 720px) {
+      .shell { width: min(var(--content), calc(100% - 40px)); }
+      .nav-wrap { min-height: 72px; }
+      .menu-toggle { display: inline-flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px; left: 0; right: 0;
+        padding: 20px 24px 24px;
+        background: var(--paper);
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        box-shadow: 0 20px 40px -20px rgba(0,0,0,.15);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 14px 4px; border-bottom: 1px solid var(--line); }
+      .nav-links a:last-child { border-bottom: 0; }
+      .nav-links a::after { display: none; }
+      .nav-contact { border: 0; padding: 14px 4px; }
+
+      .hero { display: flex; flex-direction: column; align-items: stretch; gap: 44px; padding: 80px 0; }
+      h1 { font-size: clamp(50px, 14vw, 72px); }
+      .hero-copy { font-size: 14.5px; }
+      .hero-art { min-height: 380px; width: 100%; }
+      .art-frame { width: min(82%, 360px); }
+      .art-note { right: 0; bottom: 0; }
+
+      .section { padding: 80px 0; }
+      .section-head { grid-template-columns: 1fr; gap: 18px; margin-bottom: 44px; }
+      .about-grid, .approach-layout { grid-template-columns: 1fr; gap: 40px; }
+      
+      .timeline { padding-left: 16px; }
+      .timeline-item { padding-left: 24px; padding-bottom: 36px; }
+      .timeline-title { font-size: 22px; }
+      
+      .explore-grid { grid-template-columns: 1fr 1fr; }
+      .explore-card { min-height: 230px; padding: 24px 18px; }
+      .explore-card h3 { margin-top: 30px; font-size: 21px; }
+      .closing { padding: 80px 0; }
+      .closing-inner { display: block; }
+      .closing-mark { margin-top: 48px; font-size: 70px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; gap: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+  <header class="site-header">
+    <div class="shell nav-wrap">
+      <a class="brand" href="#beranda" aria-label="MPW, kembali ke beranda">
+        <span class="brand-mark">MPW</span>
+        <span>MPW<small>Personal profile</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation">
+        Menu <span aria-hidden="true">☰</span>
+      </button>
+      <nav class="nav-links" id="navigation" aria-label="Navigasi utama">
+        <a href="#tentang">Tentang</a>
+        <a href="#perjalanan">Perjalanan</a>
+        <a href="#eksplorasi">Eksplorasi</a>
+        <a href="#pendekatan">Pendekatan</a>
+        <a class="nav-contact" href="#penutup">Penutup ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="shell hero" id="beranda">
+      <div class="reveal">
+        <div class="eyebrow">Psikologi · Teknologi · Pemikiran Sistem</div>
+        <h1>Memahami <em>manusia,</em><br />membaca sistem,<br />terus belajar.</h1>
+        <p class="hero-copy">Saya adalah mahasiswa Psikologi dengan latar pendidikan Teknik Elektronika Industri. Saya tertarik memahami bagaimana sesuatu bekerja—mulai dari sistem teknis hingga pikiran, emosi, dan perilaku manusia.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#tentang">Kenali perjalanan saya <span class="arrow">↘</span></a>
+          <a class="button button-secondary" href="#eksplorasi">Bidang yang saya jelajahi</a>
+        </div>
+      </div>
+      <div class="hero-art reveal" aria-label="Ilustrasi abstrak tentang keterhubungan berbagai gagasan">
+        <div class="art-frame">
+          <div class="art-grid"></div>
+          <div class="orbit one"></div><div class="orbit two"></div><div class="orbit three"></div>
+          <div class="art-core">
+            <div class="art-monogram">MPW</div>
+            <div class="art-caption">Curiosity · Clarity · Growth</div>
+          </div>
+        </div>
+        <div class="art-note">
+          <span>Prinsip sederhana</span>
+          <strong>Amati dengan teliti. Pahami secara utuh.</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tentang">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="section-index">01 / Tentang saya</div>
+          <div>
+            <h2>Rasa ingin tahu yang menemukan banyak arah.</h2>
+            <p class="section-intro">Saya menikmati proses mempelajari sesuatu, menghubungkan informasi, dan mencari pemahaman yang lebih utuh. Ketertarikan saya tidak terbatas pada satu bidang; justru pertemuan antarbidang sering menghadirkan sudut pandang baru.</p>
+          </div>
+        </div>
+        <div class="about-grid reveal">
+          <div class="about-text">
+            <p>Perjalanan akademik saya berawal dari Teknik Elektronika Industri. Dari sana, saya mengenal cara berpikir yang terstruktur: mengamati gejala, menelusuri kemungkinan penyebab, lalu memahami bagaimana bagian-bagian dalam sebuah sistem saling bekerja.</p>
+            <p>Ketertarikan pada manusia kemudian membawa saya ke bidang Psikologi. Saya melihat ada benang merah di antara keduanya: keinginan untuk memahami sesuatu secara lebih mendalam, bukan sekadar mengetahui hasil akhirnya.</p>
+            <p>Saya masih berada dalam proses belajar. Karena itu, saya lebih nyaman menyebut banyak hal sebagai bidang yang sedang saya dalami, eksplorasi, dan kembangkan—bukan sebagai keahlian yang sudah selesai.</p>
+          </div>
+          <blockquote class="pull-quote">
+            "Memahami sesuatu berarti bersedia melihatnya dari lebih dari satu sudut pandang."
+            <small>Cara saya memandang proses belajar</small>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="perjalanan">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="section-index">02 / Perjalanan</div>
+          <div>
+            <h2>Dua disiplin, satu benang merah.</h2>
+            <p class="section-intro">Rekam jejak pendidikan formal dari dasar hingga perguruan tinggi, membentuk cara saya memahami sistem teknis dan kompleksitas manusia.</p>
+          </div>
+        </div>
+        
+        <div class="timeline reveal">
+          <div class="timeline-item current">
+            <div class="timeline-date">2024 — Sekarang</div>
+            <h3 class="timeline-title">UIN Walisongo Semarang</h3>
+            <p class="timeline-desc">S1 Psikologi, Fakultas Ilmu Sosial dan Humaniora. Mempelajari manusia melalui perspektif ilmiah, perilaku, dan konteks sosial.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2021 — 2024</div>
+            <h3 class="timeline-title">SMKN 1 Tangerang Selatan</h3>
+            <p class="timeline-desc">Teknik Elektronika Industri. Membangun fondasi logika, pemecahan masalah, dan pemahaman sistem kelistrikan.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2018 — 2021</div>
+            <h3 class="timeline-title">SMPN 4 Tangerang Selatan</h3>
+            <p class="timeline-desc">Pendidikan menengah pertama. Awal eksplorasi minat pada sains dan cara kerja teknologi.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2012 — 2018</div>
+            <h3 class="timeline-title">MI Al-Ihsan Pamulang</h3>
+            <p class="timeline-desc">Pendidikan dasar. Fondasi karakter, literasi, dan rasa ingin tahu yang terus tumbuh hingga saat ini.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="eksplorasi">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="section-index">03 / Area eksplorasi</div>
+          <div>
+            <h2>Minat yang saling terhubung.</h2>
+            <p class="section-intro">Saya tertarik pada bidang-bidang yang membantu menjelaskan manusia, teknologi, dan lingkungan. Daftar ini mencerminkan ruang belajar yang ingin terus saya perluas.</p>
+          </div>
+        </div>
+        <div class="explore-grid reveal">
+          <article class="explore-card"><div class="explore-num">01 — HUMAN</div><h3>Psikologi &amp; perilaku</h3><p>Pikiran, emosi, perilaku, proses belajar, relasi sosial, dan dinamika manusia.</p></article>
+          <article class="explore-card"><div class="explore-num">02 — SYSTEMS</div><h3>Teknologi &amp; sistem</h3><p>Elektronika, teknologi informasi, energi, cara kerja sistem, dan pemecahan masalah.</p></article>
+          <article class="explore-card"><div class="explore-num">03 — NATURE</div><h3>Alam &amp; kehidupan</h3><p>Tanaman, hewan, lingkungan, serta pola dan keterhubungan dalam kehidupan.</p></article>
+          <article class="explore-card"><div class="explore-num">04 — KNOWLEDGE</div><h3>Riset &amp; pengetahuan</h3><p>Pencarian informasi, analisis data, penalaran, dan pembelajaran lintas disiplin.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pendekatan">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="section-index">04 / Pendekatan</div>
+          <div>
+            <h2>Sederhana dalam sikap, teliti dalam proses.</h2>
+            <p class="section-intro">Saya menyukai pendekatan yang jelas dan sistematis. Bagi saya, berpikir kritis bukan tentang membuat sesuatu menjadi rumit, melainkan memilah informasi agar inti persoalan lebih mudah dipahami.</p>
+          </div>
+        </div>
+        <div class="approach-layout reveal">
+          <div>
+            <p class="approach-copy">Saya berusaha menggabungkan rasa ingin tahu dengan ketelitian. Ketika menghadapi hal baru, saya cenderung mengamati, mengajukan pertanyaan, mencari informasi, lalu menyusun pemahaman secara bertahap. Saya juga terbuka untuk mengubah pandangan ketika menemukan alasan atau bukti yang lebih kuat.</p>
+            <div class="skills-band" aria-label="Bidang kemampuan dan pendekatan yang terus diasah">
+              <span class="skill">Analytical thinking</span>
+              <span class="skill">Critical thinking</span>
+              <span class="skill">Problem-solving</span>
+              <span class="skill">Research &amp; information analysis</span>
+              <span class="skill">Systems thinking</span>
+              <span class="skill">Technical troubleshooting</span>
+              <span class="skill">Dokumentasi &amp; Microsoft Office</span>
+            </div>
+            <p class="note">Bidang kemampuan dan pendekatan yang terus diasah melalui studi, latihan, dan pengalaman.</p>
+          </div>
+          <div class="principles">
+            <article class="principle"><div class="principle-num">01</div><div><h3>Rasa ingin tahu</h3><p>Mau bertanya, mengeksplorasi, dan mempelajari hal baru.</p></div></article>
+            <article class="principle"><div class="principle-num">02</div><div><h3>Berpikir sistematis</h3><p>Memahami hubungan antarbagian sebelum menarik kesimpulan.</p></div></article>
+            <article class="principle"><div class="principle-num">03</div><div><h3>Ketelitian dan kejelasan</h3><p>Mengutamakan informasi yang tepat serta komunikasi yang langsung.</p></div></article>
+            <article class="principle"><div class="principle-num">04</div><div><h3>Kesederhanaan</h3><p>Mencari cara yang efektif tanpa membuat hal sederhana menjadi rumit.</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" id="penutup">
+      <div class="shell closing-inner">
+        <div class="reveal">
+          <div class="eyebrow">Terus bertumbuh</div>
+          <h2>Belajar tidak harus berada dalam satu jalur.</h2>
+          <p>Saya percaya pemahaman yang baik tumbuh dari keterbukaan untuk mengamati, bertanya, dan menghubungkan berbagai perspektif. Perjalanan ini masih terus berlangsung.</p>
+        </div>
+        <div class="closing-mark" aria-hidden="true">MPW</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>© <span id="year"></span> MPW. Dibuat dengan kesederhanaan.</span>
+      <a href="#beranda">Kembali ke atas ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navigation.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    navigation.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navigation.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>
